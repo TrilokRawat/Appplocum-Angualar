@@ -1,0 +1,57 @@
+<div class="main-wraper">
+  <div class="card text-center">
+      <div class="card-header">
+        Your Cart Items
+        <button type="button" class="btn btn-sm btn-warning float-right">
+            Total items <span class="badge badge-light">{{shared.cartObj.line_items.length}}</span>        
+        </button>
+        <button type="button" class="btn btn-sm btn-danger mr-2 float-right" (click)="shared.clearCartData()" *ngIf="shared.cartObj.line_items.length">
+           Empty Cart       
+        </button>
+      </div>
+      <div class="card-body">  
+        <table class="table">
+          <thead>
+            <tr>      
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            
+            </tr>
+            <tr *ngFor="let itm of shared.cartObj.line_items">      
+              <td class="text-left">{{itm.Name}}</td>
+              <td>{{itm.price | currency}}</td>
+              <td class="w30">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-info" type="button" (click)="changeQty(itm,1)"
+                    [disabled]="itm.max_qty == itm.qty">+</button>
+                  </div>
+                  <input type="number" class="form-control text-center"  value="{{itm.qty}}"
+                    name="qunatity" [readonly]="true" [disabled]="true">
+                  <div class="input-group-append">
+                    <button class="btn btn-danger" type="button"
+                    [disabled]="itm.qty == 1"  (click)="changeQty(itm,-1)">-</button>
+                  </div>
+                </div>
+              </td>
+              <td>{{itm.total}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- <a routerLink = "/billing" class="btn btn-sm btn-primary" *ngIf="cart.cartItemsList && cart.cartTotal">Checkout</a> -->
+      </div>
+      <div class="card-footer text-muted font-weight-bold">
+        Total :  {{shared.cartObj.total | currency}} 
+        <span class="float-right"> 
+        <button type="button" class="btn btn-success" (click)="order()" [disabled]="shared.cartObj.line_items.length == 0"> Order</button> 
+        </span>
+
+      </div>  
+    </div>
+</div>

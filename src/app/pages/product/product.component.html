@@ -1,0 +1,25 @@
+<div class="container main-wraper">
+    <div class=" row" *ngIf="products">
+        <div class="col-sm-4 my-2" *ngFor="let item of products">
+            <div class="card">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <div class="card-body">
+                  <h5 class="card-title"> Title: {{item.Name}}</h5>
+                  <p class="card-text"> Decription: {{item.Location}}</p>
+                  <p class="card-text"><small class="text-muted">Price:{{item.price | currency}}</small></p>
+                  <p class="card-text">
+                      <button type="button"  class="btn btn-primary" (click)="addtocart(item)"
+                      [hidden]="disableAddtocart(item) || item.qty == 0"> Add to Cart</button>
+                  </p>
+                  <p class="card-text" *ngIf="disableAddtocart(item)">
+                      <button type="button"  class="btn btn-success" [disabled]="true"
+                      > Added</button>
+                  </p>
+                  <p class="card-text" *ngIf="item.qty == 0">
+                      <button type="button"  class="btn btn-success"  [disabled]="true"
+                      > Soled out</button>
+                  </p>
+                </div>
+              </div>
+        </div>
+    </div>

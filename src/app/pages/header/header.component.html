@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <a href="#" class="navbar-brand">Applocum App</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!--   <div class="navbar-nav">
+            
+        </div> -->
+        <div class="navbar-nav ml-auto" *ngIf="currentPage != 'login' && currentPage != 'signup'">
+            <a href="javascript:void(0)" class="nav-item nav-link " [routerLink]="['product']" [routerLinkActive]="['active-link']" >Products</a>
+            <a href="javascript:void(0)" class="nav-item nav-link" [routerLink]="['cart']" [routerLinkActive]="['active-link']">Cart</a>
+            <a href="javascript:void(0)" class="nav-item nav-link" (click)="onclickLogout()">Logout</a>
+        </div>
+        <div class="navbar-nav ml-auto" *ngIf="currentPage == 'login'">
+            <a href="javascript:void(0)" class="nav-item nav-link" [routerLink]="['signup']" [routerLinkActive]="['active-link']" >Sign up</a>
+        </div>
+        <div class="navbar-nav ml-auto" *ngIf="currentPage == 'signup'">
+            <a href="javascript:void(0)"  class="nav-item nav-link" [routerLink]="['login']" [routerLinkActive]="['active-link']">Login</a>
+        </div>
+    </div>
+</nav>

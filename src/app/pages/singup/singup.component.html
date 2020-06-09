@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 min-height  d-flex flex-column 
+        justify-content-center">
+      <div class="row">
+        <div class="col-lg-10 col-md-8 mx-auto">
+
+          <!-- form card login -->
+          <div class="card rounded shadow shadow-sm">
+            <div class="card-header">
+              <h3 class="mb-0">Signup</h3>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)" autocomplete="off" id="formsignup"
+                novalidate="">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputname">First Name</label>
+                    <input type="text" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" formControlName="first_name"
+                      id="inputname" placeholder="First name">
+                    <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                      <div *ngIf="f.first_name.errors.required">Name is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputlast">Last Name</label>
+                    <input type="text" class="form-control" 
+                    [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" 
+                    formControlName="last_name" id="inputlast"
+                      placeholder="Last Name">
+                    <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                      <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" 
+                    formControlName="email" id="inputEmail4"
+                      placeholder="Email">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required 
+                      || f.email.errors" >Email is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="inputPassword4"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"  placeholder="Password">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">password is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputnumnert">Phone</label>
+                    <input type="text" class="form-control" formControlName="phone" id="inputnumnert"
+                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"  placeholder="Email">
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                      <div *ngIf="f.phone.errors.required || f.phone.errors.pattern">Phone  is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="meeting-time">Date of Birth:</label>
+                    <input type="date" class="form-control" formControlName="date_of_birth" id="meeting-time"
+                      name="dateofbirth" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" formControlName="address_line1" id="inputAddress"
+                    placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Address 2</label>
+                  <input type="text" formControlName="address_line2" class="form-control" id="inputAddress2"
+                    placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress3">Address 3</label>
+                  <input type="text" class="form-control" formControlName="address_line3" id="inputAddress3"
+                    placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" formControlName="town" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" formControlName="pincode" class="form-control" id="inputZip">
+                  </div>
+                </div>
+                <div class="custom-file my-1">
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Profile Image</label>
+                    <input type="file" 
+                    (change)="onSelectFile($event, 'avatar')"  class="form-control-file" id="exampleFormControlFile1"
+                    formControlName="avatar" >
+                  </div>
+                  <!-- <input type="file" formControlName="avatar" class="custom-file-input my-2" id="validatedCustomFile"> -->
+                  <!-- <label class="custom-file-label" for="validatedCustomFile">Add Profile </label> -->
+                </div>
+                <div class="custom-file my-1">
+                  <label for="exampleFormControlFile2">Documnets</label>
+                  <input type="file" formControlName="documnet" 
+                  (change)="onSelectFile($event, 'document')"  class="form-control-file" id="exampleFormControlFile2" multiple>
+                  <!-- <input type="file" formControlName="documents" class="custom-file-input my-2" id="fileDocument"
+                    multiple>
+                  <label class="custom-file-label" for="fileDocument">Add Documents </label> -->
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg float-right" id="btnSignup">Save</button>
+              </form>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
+
+        </div>
+
+
+      </div>
+      <!--/row-->
+
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->
